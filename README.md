@@ -1,93 +1,77 @@
-# QuoteBloom
+# QuoteBloom — Quote of the Day
 
-**QuoteBloom** is a polished, editorial **Quote of the Day** application built for Android Development Internship Task 2. It provides an offline-first anthology of 65 accurately attributed public-domain and original reflections across five themes (**Motivation**, **Learning**, **Confidence**, **Kindness**, and **Life**), paired with a warm editorial visual identity.
+An Android app created for Task 2 of the CodSoft Android Development Internship. QuoteBloom brings together daily inspiration, a searchable quote collection and saved favourites in an elegant interface.
 
----
+## Features
 
-## Architecture & Environment Note
+- Daily quote selected using the device’s local date
+- Automatic daily refresh when opening or returning to the app
+- Discover additional quotes
+- Search quotes by text or author
+- Filter by Motivation, Learning, Confidence, Kindness and Life
+- Save, view and remove favourite quotes
+- Share quotes through Android’s share sheet
+- Copy quotes to the clipboard
+- Light, dark and system themes
+- Customisable quote-card backgrounds
+- Local storage for favourites and preferences
 
-This repository contains two synchronized deliverables so you can inspect, test, and package QuoteBloom in both native Android and web/Capacitor environments:
+## Design
 
-1. **Native Android Application (Primary AI Studio Build Target)**
-   - Located in `/app` (`Kotlin` + `Jetpack Compose` + `Material 3`).
-   - Powers the live Streaming Android Emulator in Google AI Studio and builds directly into an installable Android APK/AAB via Gradle.
-2. **React + TypeScript + Vite + Capacitor Companion Web & Hybrid Reference**
-   - Configured via `package.json`, `vite.config.ts`, `capacitor.config.ts`, and `/src` for browser deployment (including GitHub Pages subpath hosting) and Capacitor Android packaging.
-   - Note: In this cloud Android container, Gradle and JVM/Robolectric tests are executed directly; no claim is made that a Capacitor-wrapped APK was built separately from the native Gradle build.
+An editorial interface with layered cards, soft shadows, violet and plum accents, and subtle animations.
 
----
+## Technologies
 
-## Core Features
+- Kotlin
+- Jetpack Compose
+- Material 3
+- SharedPreferences
+- Gradle
 
-- **Today (Daily Quote & Rollover)**:
-  - Displays the inspiring Quote of the Day, author attribution, contextual note, category badge, and formatted local calendar date.
-  - Deterministically selects the daily quote by local calendar date (`YYYY-MM-DD`) so it remains consistent throughout the same day and automatically rolls over when the local date changes—including when the app returns to the foreground (`ON_RESUME` / `visibilitychange`).
-- **Discover Another Quote (Non-Destructive)**:
-  - Cycles through fresh quotes without immediate repeats and without replacing Today's pinned Quote of the Day. Includes a one-tap **Back to Today's Quote** action.
-- **Native Sharing & Clipboard Fallback**:
-  - Uses the native Android share sheet (`Intent.createChooser` / `@capacitor/share`) and provides a one-tap copy-to-clipboard action and automatic clipboard fallback.
-- **Explore Collection**:
-  - Real-time search across quote text and author names, combined with interactive category filter chips (`All`, `Motivation`, `Learning`, `Confidence`, `Kindness`, `Life`).
-- **Saved Favourites**:
-  - Save or remove favourites from any screen, search within saved favourites, and view a helpful editorial empty state with a direct call-to-action when no quotes are saved yet.
-- **Editorial Appearance & Accessibility**:
-  - Switch between **Warm Ivory (Light)**, **Deep Plum (Dark)**, and **System Default** themes.
-  - Choose from **six curated high-contrast quote-card backgrounds**: *Warm Ivory*, *Deep Plum*, *Botanical Sage*, *Royal Violet*, *Terracotta Dawn*, and *Midnight Botanica*.
-  - Includes a **Reduced Motion** toggle, minimum `48dp` touch targets, semantic labels, and adaptive mobile bottom navigation / tablet-desktop navigation rail layouts.
-- **Resilient Local-Only Storage**:
-  - Persists favourites, theme mode, selected quote-card background, reduced-motion preference, and daily quote state locally (`SharedPreferences` on Android / `localStorage` on Web).
-  - Gracefully recovers from malformed JSON or unavailable storage using an in-memory fallback. Requires **no login, no backend, no ads, and no API keys**.
+## Daily Quotes
 
----
+Quotes are bundled with the app and selected according to the local calendar date. The daily quote stays consistent throughout the day.
 
-## Local Setup & Commands
+The collection is finite, so quotes eventually repeat. Daily quotes do not require AI generation or an external quote service.
 
-### 1. Native Android (Gradle / Android Studio)
+## Run the Project
 
-**Prerequisites:**
-- JDK 17+ (or Android Studio Ladybug / Meerkat bundled JBR)
-- Android SDK Platform 36
+1. Download or clone this repository.
+2. Open the project’s root folder in Android Studio.
+3. Install the Android SDK and JDK versions required by the project’s Gradle configuration.
+4. Allow Gradle sync to complete.
+5. Select an Android emulator or connected Android phone.
+6. Run the app module.
 
-**Commands:**
-```bash
-# Run unit and Robolectric UI/logic validation tests
-gradle :app:testDebugUnitTest
+Internet access may be required to download build tools and dependencies during setup.
 
-# Assemble the Debug APK
-gradle :app:assembleDebug
-```
-The compiled debug APK is generated at `app/build/outputs/apk/debug/app-debug.apk`.
+## Install an APK
 
-### 2. Browser Version & GitHub Pages Deployment (React + Vite)
+If you have a QuoteBloom APK:
 
-**Prerequisites:**
-- Node.js 20+ and npm 10+
+1. Download it onto your Android phone.
+2. Open the APK and allow installation from that source if prompted.
+3. Tap Install, or Update if a compatible version is already installed.
+4. Open QuoteBloom from your app list.
 
-**Commands:**
-```bash
-# Install dependencies
-npm install
+APK updates must use the same application ID and signing certificate as the installed version.
 
-# Start local development server
-npm run dev
+## Project Structure
 
-# Run TypeScript typecheck and production web build (configured with base: './' for GitHub Pages subpath compatibility)
-npm run build
+- app/src/main/java/ — Kotlin application source
+- app/src/main/res/ — Fonts, icons, themes and other resources
+- app/src/main/AndroidManifest.xml — Android application manifest
+- app/src/test/ — Local test source
+- gradle/ — Gradle configuration files
+- build.gradle.kts — Root build configuration
+- settings.gradle.kts — Project settings
 
-# Preview production build locally
-npm run preview
-```
+## Data Storage
 
-**GitHub Pages Subpath Deployment:**
-- `vite.config.ts` uses `base: './'` so all compiled JS, CSS, and font assets resolve relatively under any repository subpath (e.g., `https://<username>.github.io/quotebloom/`) without broken asset paths or refresh routing errors.
+Favourites and preferences are stored locally on the device. They are not synchronised between devices. Clearing app data or uninstalling the app may remove them.
 
-### 3. Capacitor Android Packaging Steps (Local Toolchain)
+## Author
 
-If packaging the web build via Capacitor on a local workstation with Android Studio installed:
-```bash
-npm install
-npm run build
-npx cap sync android
-npx cap open android
-```
-From Android Studio, let Gradle sync finish and select **Build > Build Bundle(s) / APK(s) > Build APK(s)** or run on a connected device.
+Chethan Kumar D
+
+[GitHub Profile](https://github.com/chethan-kumar-d)
