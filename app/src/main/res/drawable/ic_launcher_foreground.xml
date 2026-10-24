@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Subtle decorative circle halo -->
+    <path
+        android:fillColor="#267455D9"
+        android:pathData="M54,24A30,30 0 1,1 54,84A30,30 0 1,1 54,24Z" />
+    <!-- Botanical Bloom Leaf Left -->
+    <path
+        android:fillColor="#7D9B84"
+        android:pathData="M54,74 C38,74 30,60 32,46 C44,46 54,56 54,74 Z" />
+    <!-- Botanical Bloom Leaf Right -->
+    <path
+        android:fillColor="#7455D9"
+        android:pathData="M54,74 C70,74 78,60 76,46 C64,46 54,56 54,74 Z" />
+    <!-- Center Blooming Petal -->
+    <path
+        android:fillColor="#F07868"
+        android:pathData="M54,72 C44,60 44,42 54,30 C64,42 64,60 54,72 Z" />
+    <!-- Editorial Quotation Marks Overlay in Warm Ivory -->
+    <path
+        android:fillColor="#FAF7F2"
+        android:pathData="M43,45 C43,40.5 46.5,37 51,37 L51,41 C48.8,41 47,42.8 47,45 L51,45 L51,53 L43,53 Z M57,45 C57,40.5 60.5,37 65,37 L65,41 C62.8,41 61,42.8 61,45 L65,45 L65,53 L57,53 Z" />
+</vector>

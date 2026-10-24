@@ -1,0 +1,6 @@
+{
+  "name": "QuoteBloom",
+  "description": "A polished editorial Quote of the Day Android app with curated daily quotes, discovery, search, category filters, saved favourites, and customizable quote card themes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
