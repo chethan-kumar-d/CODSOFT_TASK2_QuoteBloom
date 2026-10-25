@@ -2,6 +2,12 @@
 
 An Android app created for Task 2 of the CodSoft Android Development Internship. QuoteBloom brings together daily inspiration, a searchable quote collection and saved favourites in an elegant interface.
 
+## Demo Video
+
+Watch QuoteBloom running on my Android phone:
+
+[▶ Watch the QuoteBloom demo on LinkedIn](https://lnkd.in/p/dzFHkYQP)
+
 ## Features
 
 - Daily quote selected using the device’s local date
@@ -51,20 +57,20 @@ If you have a QuoteBloom APK:
 
 1. Download it onto your Android phone.
 2. Open the APK and allow installation from that source if prompted.
-3. Tap Install, or Update if a compatible version is already installed.
+3. Tap **Install**, or **Update** if a compatible version is already installed.
 4. Open QuoteBloom from your app list.
 
 APK updates must use the same application ID and signing certificate as the installed version.
 
 ## Project Structure
 
-- app/src/main/java/ — Kotlin application source
-- app/src/main/res/ — Fonts, icons, themes and other resources
-- app/src/main/AndroidManifest.xml — Android application manifest
-- app/src/test/ — Local test source
-- gradle/ — Gradle configuration files
-- build.gradle.kts — Root build configuration
-- settings.gradle.kts — Project settings
+- `app/src/main/java/` — Kotlin application source
+- `app/src/main/res/` — Fonts, icons, themes and other resources
+- `app/src/main/AndroidManifest.xml` — Android application manifest
+- `app/src/test/` — Local test source
+- `gradle/` — Gradle configuration files
+- `build.gradle.kts` — Root build configuration
+- `settings.gradle.kts` — Project settings
 
 ## Data Storage
 
